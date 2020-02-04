@@ -141,8 +141,7 @@ app.post("/register", function(req, res) {
     User.register(new User({ first: first, last: last, username: username, phone: phone }), password, function(err, user) {
         if (err) {
             console.log(err);
-            console.log(err.message);
-            res.render('register', {
+            return res.render('register', {
                 errors: err.message
             });
         }
