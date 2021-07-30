@@ -1,35 +1,47 @@
 <% include partials/header %>
-<div class="container" style="padding-top:7%">
-		<div class="row">
-			<div class="col-lg-12">
-				<div id="content" class="hidden">
-					<h1>Login</h1>
-					<br>
-					<div class="form-group">
+    <h2 style="margin-left: 2%;"><b> Anila</b></h2>
 
-						<form action="/login" method="POST" class="authform">
-						<input type="text" class="form-control" name="username" placeholder="username">
-						<div class="input-group">
-							<input type="password" class="form-control" name="password" placeholder="password">
-							<span class="input-group-btn">
+    <div class="container" style="padding-top:7%">
+
+        <!-- <div class="col-sm-8 alert alert-danger"> -->
+
+        <!-- </div> -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div id="content" class="hidden">
+                    <%if (messages) {%>
+                        <h4 style="font-color:white">
+                            <%- messages() %>
+                        </h4>
+                        <% }%>
+
+                            <h1>Login</h1>
+                            <br>
+                            <div class="form-group">
+                                <form action="/login" method="POST" class="authform">
+                                    <input type="text" class="form-control" name="username" placeholder="username">
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" name="password" placeholder="password">
+                                        <span class="input-group-btn">
 								<button class="btn btn-default">Login</button>
 							</span>
-						</div>
-						<br>
-						<a href="/">Back to main page</a>
+                                    </div>
+                                    <br>
+                                    <a href="/">Back to main page</a>
 
-						</form>
+                                </form>
 
-    				</div>
-    			</div>
-			</div>
-		</div>
-	</div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script>
-$(document).ready(function(){
-    $('#content').fadeIn(800).removeClass('hidden');
-});
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#content').fadeIn(800).removeClass('hidden');
+        });
+    </script>
 
-<% include partials/footer %>
+    <% include partials/footer %>
