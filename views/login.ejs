@@ -1,5 +1,5 @@
-<% include partials/header %>
-    <h2 style="margin-left: 2%;"><b> Anila</b></h2>
+<%- include ("partials/header") %>
+    <h2 style="margin-left: 2%;"><b>Saurabh</b></h2>
 
     <div class="container" style="padding-top:7%">
 
@@ -10,9 +10,9 @@
 
             <div class="col-lg-12">
                 <div id="content" class="hidden">
-                    <%if (messages) {%>
+                    <% if (messages) { %>
                         <h4 style="font-color:white">
-                            <%- messages() %>
+                            <% messages() %>
                         </h4>
                         <% }%>
 
@@ -44,4 +44,4 @@
         });
     </script>
 
-    <% include partials/footer %>
+    <%- include ("partials/footer") %>

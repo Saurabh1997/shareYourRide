@@ -1,4 +1,4 @@
-var express = require("express"),
+const express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   path = require("path"),
@@ -10,8 +10,12 @@ var express = require("express"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 const nodemailer = require("nodemailer");
+app.use(expressValidator());
 
-mongoose.connect("mongodb://localhost/rideshare", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/rideshare", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 /* Mongo Database Objects */
 var userSchema = new mongoose.Schema({
@@ -43,7 +47,8 @@ var Ride = mongoose.model("Ride", rideSchema);
 // idk what these do but just use these
 app.use(express.static(__dirname + "/public"));
 app.use(express.static("views"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(
   require("express-session")({
     secret: "Secret",
@@ -85,7 +90,7 @@ passport.deserializeUser(User.deserializeUser());
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTES ~~~~~~~~~~~~~~~~~~~~~~ */
 // RENDER THE LANDING PAGE
-app.get("/", isLoggedInLanding, function (req, res) {
+app.get("/", isLoggedInLanding, async function (req, res) {
   res.render("landing");
 });
 
